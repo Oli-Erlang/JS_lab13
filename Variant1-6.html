@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script>
+            $('document').ready(function(){
+                $('#сonfirmEdit').click(function(){
+                    var val1 = $('#editValue').val();
+                    $('.inEdit').text(val1);
+                    $('.inEdit').removeClass();
+                    $('#edit').hide();
+                    $('#add').show();
+                    $('td').css("background-color","white");
+                });
+                $('#cancelEdit').click(function(){
+                    $('#edit').hide();
+                    $('#add').show();
+                    $('td').css("background-color","white");
+                });
+                $('td').click(function(){
+                    $('td').css("background-color","white");
+                    $('#edit').show();
+                    $('#add').hide();
+                    $(this).addClass('inEdit');
+                    var eq1 = $(this).text();
+                    $(this).css("background-color","pink");
+                    $('#editValue').val(eq1);
+                });
+                $('#confirmAdd').click(function(){
+                    var addName = $('#addName').val();
+                    var addQuantity = $('#addQuantity').val();
+                    console.log(addName+" "+addQuantity);
+                    var oldHtml = $('table').html();
+                    $('table').html(oldHtml+'<tr> <td>'+addName+'</td> <td>'+addQuantity+'</td> </tr>')
+                });
+                $('#cancelAdd').click(function(){
+                    $('#addName').val("Item Category");
+                    $('#addQuantity').val("Item Quantity");
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <table border="1" border-color="black">
+            <tr>
+                <td>Item Category</td><td>Item Quantity</td>
+            </tr>
+            <tr>
+                <td>Shoes</td><td>569</td>
+            </tr>
+            <tr>
+                <td>Bags</td><td>256</td>
+            </tr>
+            <tr>
+                <td>Hats</td><td>30</td>
+            </tr>
+            <tr>
+                <td>Dresses</td><td>470</td>
+            </tr>
+            <tr>
+                <td>Jeans</td><td>345</td>
+            </tr>
+            <tr>
+                <td>T-Shirts</td><td>300</td>
+            </tr>
+            <tr>
+                <td>Lingerie</td><td>100</td>
+            </tr>
+            <tr>
+                <td>Swimwear</td><td>90</td>
+            </tr>
+            <tr>
+                <td>Sport</td><td>265</td>
+            </tr>
+            <tr>
+                <td>Snickers</td><td>200</td>
+            </tr>
+            <tr>
+                <td>Gloves</td><td>45</td>
+            </tr>
+            <tr>
+                <td>Coats</td><td>150</td>
+            </tr>
+        </table>
+        <br>
+        <div id="edit" hidden>
+            <input type="text" id="editValue" value="Item's value"> <br><br>
+            <button type="button" name="сonfirmEdit" id="сonfirmEdit">Confirm edit</button>
+            <button type="button" name="cancelEdit" id="cancelEdit">Cancel edit</button>
+        </div>
+        <div id="add">
+            <input type="text" id="addName" value="Item Category"> <br><br>
+            <input type="text" id="addQuantity" value="Item Quantity"><br><br>
+            <button type="button" name="confirmAdd" id="confirmAdd">Add</button>
+            <button type="button" name="cancelAdd" id="cancelAdd">Cancel</button>
+        </div>
+        <div id="test">
+
+        </div>
+    </body>
+</html>
